@@ -13,9 +13,10 @@ import fr.zorg.bungeesk.bukkit.packets.PacketClient;
 import fr.zorg.bungeesk.common.entities.BungeeServer;
 import fr.zorg.bungeesk.common.packets.MakeServerExecuteCommandPacket;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Name("Execute console command")
+@Name("Execute Proxy Console Command")
 @Description("Make bungee or spigot execute command")
 @Since("1.0.0 - 1.1.0: Usage of BungeeServer type")
 @Examples({"make bungee execute console command \"alert This is an alert !\"",
@@ -36,7 +37,7 @@ public class EffExecuteCommand extends Effect {
     private int pattern;
 
     @Override
-    public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parseResult) {
+    public boolean init(Expression<?> @NotNull [] exprs, int matchedPattern, @NotNull Kleenean isDelayed, SkriptParser.@NotNull ParseResult parseResult) {
         this.pattern = matchedPattern;
 
         if (this.pattern == 1) {
@@ -71,7 +72,7 @@ public class EffExecuteCommand extends Effect {
     }
 
     @Override
-    public String toString(@Nullable Event e, boolean debug) {
+    public @NotNull String toString(@Nullable Event e, boolean debug) {
         if (this.pattern == 0)
             return "make bungeecord execute command " + this.command.toString(e, debug);
         if (this.pattern == 1)

@@ -12,9 +12,10 @@ import ch.njol.util.Kleenean;
 import fr.zorg.bungeesk.bukkit.packets.PacketClient;
 import fr.zorg.bungeesk.bukkit.utils.ClientBuilder;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Name("Start new connection")
+@Name("Start New Proxy Connection")
 @Description("Start a new connection to bungeecord")
 @Since("1.0.0")
 @Examples("on load:\n" +
@@ -32,18 +33,18 @@ public class EffStartConnection extends Effect {
     private Expression<ClientBuilder> clientBuilderExpression;
 
     @Override
-    public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parseResult) {
+    public boolean init(Expression<?>[] exprs, int matchedPattern, @NotNull Kleenean isDelayed, SkriptParser.@NotNull ParseResult parseResult) {
         this.clientBuilderExpression = (Expression<ClientBuilder>) exprs[0];
         return true;
     }
 
     @Override
-    protected void execute(Event e) {
+    protected void execute(@NotNull Event e) {
         PacketClient.start(clientBuilderExpression.getSingle(e));
     }
 
     @Override
-    public String toString(@Nullable Event e, boolean debug) {
+    public @NotNull String toString(@Nullable Event e, boolean debug) {
         return "start connection with bungee connection";
     }
 

@@ -13,8 +13,9 @@ import fr.zorg.bungeesk.bukkit.packets.PacketClient;
 import fr.zorg.bungeesk.common.entities.BungeePlayer;
 import fr.zorg.bungeesk.common.packets.SendActionBarPacket;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.NotNull;
 
-@Name("Send action bar message")
+@Name("Send Bungeecord ActionBar Message")
 @Description("Send an action bar message to a player on the bungeecord network")
 @Examples("send bungee player named \"Notch\" action bar \"&6Welcome ! :)\"")
 @Since("1.1.0")
@@ -29,7 +30,7 @@ public class EffSendActionBar extends Effect {
     private Expression<String> message;
 
     @Override
-    public boolean init(Expression<?>[] exprs, int pattern, Kleenean kleenean, SkriptParser.ParseResult parseResult) {
+    public boolean init(Expression<?>[] exprs, int pattern, @NotNull Kleenean kleenean, SkriptParser.@NotNull ParseResult parseResult) {
         this.player = (Expression<BungeePlayer>) exprs[0];
         this.message = (Expression<String>) exprs[1];
         return true;
@@ -45,7 +46,7 @@ public class EffSendActionBar extends Effect {
     }
 
     @Override
-    public String toString(Event e, boolean debug) {
+    public @NotNull String toString(Event e, boolean debug) {
         return "send action bar message " + this.message.toString(e, debug) + " to bungee player " + this.player.toString(e, debug);
     }
 

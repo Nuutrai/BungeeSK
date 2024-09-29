@@ -12,9 +12,10 @@ import ch.njol.util.Kleenean;
 import fr.zorg.bungeesk.bukkit.packets.PacketClient;
 import fr.zorg.bungeesk.common.packets.GlobalScriptsRequestPacket;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Name("Retrieve scripts")
+@Name("Retrieve Scripts")
 @Description("Retrieve every script from the bungee")
 @Since("1.0.0")
 @Examples("retrieve all scripts from bungee")
@@ -25,17 +26,17 @@ public class EffRetrieveScripts extends Effect {
     }
 
     @Override
-    public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parseResult) {
+    public boolean init(Expression<?> @NotNull [] exprs, int matchedPattern, @NotNull Kleenean isDelayed, SkriptParser.@NotNull ParseResult parseResult) {
         return true;
     }
 
     @Override
-    protected void execute(Event e) {
+    protected void execute(@NotNull Event e) {
         PacketClient.sendPacket(new GlobalScriptsRequestPacket());
     }
 
     @Override
-    public String toString(@Nullable Event e, boolean debug) {
+    public @NotNull String toString(@Nullable Event e, boolean debug) {
         return "retrieve every scripts from the bungeecord";
     }
 

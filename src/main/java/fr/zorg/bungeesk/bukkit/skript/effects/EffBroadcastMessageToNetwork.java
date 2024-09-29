@@ -12,6 +12,7 @@ import ch.njol.util.Kleenean;
 import fr.zorg.bungeesk.bukkit.packets.PacketClient;
 import fr.zorg.bungeesk.common.packets.BroadcastToNetworkPacket;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.NotNull;
 
 @Name("Broadcast message to the network")
 @Description("Broadcast message to the network, like the /alert command does but with more personalization (the messages will not appear in the spigot consoles)")
@@ -27,18 +28,18 @@ public class EffBroadcastMessageToNetwork extends Effect {
     private Expression<String> message;
 
     @Override
-    public boolean init(Expression<?>[] exprs, int pattern, Kleenean kleenean, SkriptParser.ParseResult parseResult) {
+    public boolean init(Expression<?>[] exprs, int pattern, @NotNull Kleenean kleenean, SkriptParser.@NotNull ParseResult parseResult) {
         this.message = (Expression<String>) exprs[0];
         return true;
     }
 
     @Override
-    protected void execute(Event e) {
+    protected void execute(@NotNull Event e) {
         PacketClient.sendPacket(new BroadcastToNetworkPacket(this.message.getSingle(e)));
     }
 
     @Override
-    public String toString(Event e, boolean debug) {
+    public @NotNull String toString(Event e, boolean debug) {
         return "broadcast message " + this.message.toString(e, debug) + " into the whole bungeecord network";
     }
 

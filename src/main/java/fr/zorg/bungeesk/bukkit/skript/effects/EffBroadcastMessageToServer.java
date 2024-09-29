@@ -13,10 +13,11 @@ import fr.zorg.bungeesk.bukkit.packets.PacketClient;
 import fr.zorg.bungeesk.common.entities.BungeeServer;
 import fr.zorg.bungeesk.common.packets.BroadcastMessageToServerPacket;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Name("Broadcast message to server")
-@Description("Broadcasts a message to a server in the network")
+@Name("Broadcast Bungee Message to Server")
+@Description("Broadcasts a bungeecord message to a server.")
 @Examples("broadcast bungee message \"&aHello world !\" to bungee server named \"hub\"")
 @Since("1.0.3 - 1.1.0: Usage of BungeeServer type")
 public class EffBroadcastMessageToServer extends Effect {
@@ -30,7 +31,7 @@ public class EffBroadcastMessageToServer extends Effect {
     private Expression<BungeeServer> server;
 
     @Override
-    public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parseResult) {
+    public boolean init(Expression<?>[] exprs, int matchedPattern, @NotNull Kleenean isDelayed, SkriptParser.@NotNull ParseResult parseResult) {
         this.message = (Expression<String>) exprs[0];
         this.server = (Expression<BungeeServer>) exprs[1];
         return true;
@@ -46,7 +47,7 @@ public class EffBroadcastMessageToServer extends Effect {
     }
 
     @Override
-    public String toString(@Nullable Event e, boolean debug) {
+    public @NotNull String toString(@Nullable Event e, boolean debug) {
         return "broadcasts message " + this.message.toString(e, debug) + " to server " + this.server.toString(e, debug);
     }
 

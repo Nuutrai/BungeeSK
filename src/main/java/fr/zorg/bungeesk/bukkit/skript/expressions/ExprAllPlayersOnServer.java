@@ -1,4 +1,4 @@
-package fr.zorg.bungeesk.bukkit.skript.effects;
+package fr.zorg.bungeesk.bukkit.skript.expressions;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.doc.Description;

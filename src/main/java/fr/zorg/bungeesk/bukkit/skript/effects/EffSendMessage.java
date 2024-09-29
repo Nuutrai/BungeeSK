@@ -13,9 +13,10 @@ import fr.zorg.bungeesk.bukkit.packets.PacketClient;
 import fr.zorg.bungeesk.common.entities.BungeePlayer;
 import fr.zorg.bungeesk.common.packets.SendMessagePacket;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Name("Send message to bungee player")
+@Name("Send Message to BungeePlayer")
 @Description("Send a message to a bungee player on the network")
 @Examples("send bungee message \"&6Hello !\" to bungee player named \"Notch\"")
 @Since("1.0.0")
@@ -28,20 +29,20 @@ public class EffSendMessage extends Effect {
     private Expression<BungeePlayer> player;
     private Expression<String> message;
 
-    public boolean init(final Expression<?>[] exprs, final int matchedPattern, final Kleenean isDelayed, final SkriptParser.ParseResult parseResult) {
+    public boolean init(final Expression<?>[] exprs, final int matchedPattern, final @NotNull Kleenean isDelayed, final SkriptParser.@NotNull ParseResult parseResult) {
         this.message = (Expression<String>) exprs[0];
         this.player = (Expression<BungeePlayer>) exprs[1];
         return true;
     }
 
-    protected void execute(final Event e) {
+    protected void execute(final @NotNull Event e) {
         if (this.player.getSingle(e) == null)
             return;
         final SendMessagePacket packet = new SendMessagePacket(this.player.getSingle(e), this.message.getSingle(e));
         PacketClient.sendPacket(packet);
     }
 
-    public String toString(@Nullable Event e, boolean debug) {
+    public @NotNull String toString(@Nullable Event e, boolean debug) {
         return "send bungee message " + message.toString(e, debug) + " to " + player.toString(e, debug);
     }
 

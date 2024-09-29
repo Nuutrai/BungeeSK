@@ -18,7 +18,7 @@ public class BungeeSK extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        this.launchAutoUpdater();
+        //this.launchAutoUpdater();
         api = new BukkitAPI();
         this.metrics = new Metrics(this, 10655);
 
@@ -42,6 +42,7 @@ public class BungeeSK extends JavaPlugin implements Listener {
         new Thread(task).start();
     }
 
+    /*
     private void launchAutoUpdater() {
         this.getServer().getScheduler().runTaskTimerAsynchronously(this, () -> {
             if (!AutoUpdater.isUpToDate(this.getDescription().getVersion())) {
@@ -49,6 +50,8 @@ public class BungeeSK extends JavaPlugin implements Listener {
             }
         }, 10L, 1728000L); // Everyday
     }
+
+     */
 
     public static BukkitAPI getApi() {
         return api;

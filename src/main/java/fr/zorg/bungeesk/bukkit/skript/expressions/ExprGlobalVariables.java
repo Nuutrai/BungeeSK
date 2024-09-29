@@ -20,6 +20,8 @@ import fr.zorg.bungeesk.common.entities.GlobalVariableChanger;
 import fr.zorg.bungeesk.common.packets.GlobalVariablePacket;
 import fr.zorg.bungeesk.common.utils.Pair;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 @Name("Global variables stored on the Bungeecord")
 @Description("Set, get and delete a global variable stored on the Bungeecord. Value can be any type.")
@@ -37,13 +39,13 @@ public class ExprGlobalVariables extends SimpleExpression<Object> {
     private Expression<String> varName;
 
     @Override
-    public boolean init(Expression<?>[] exprs, int pattern, Kleenean kleenean, SkriptParser.ParseResult parseResult) {
+    public boolean init(Expression<?>[] exprs, int pattern, @NotNull Kleenean kleenean, SkriptParser.@NotNull ParseResult parseResult) {
         this.varName = (Expression<String>) exprs[0];
         return true;
     }
 
     @Override
-    protected Object[] get(Event e) {
+    protected Object @NotNull [] get(@NotNull Event e) {
         final GlobalVariablePacket packet = new GlobalVariablePacket(this.varName.getSingle(e), null, null, GlobalVariableChanger.GET);
         final Object responseObject = CompletableFutureUtils.generateFuture(packet);
 
@@ -64,26 +66,24 @@ public class ExprGlobalVariables extends SimpleExpression<Object> {
     }
 
     @Override
-    public Class<?> getReturnType() {
+    public @NotNull Class<?> getReturnType() {
         return Object.class;
     }
 
     @Override
-    public String toString(Event e, boolean debug) {
+    public @NotNull String toString(Event e, boolean debug) {
         return "global variable named " + this.varName.toString(e, debug);
     }
 
     @Override
-    public Class<?>[] acceptChange(Changer.ChangeMode mode) {
+    public Class<?> @Nullable [] acceptChange(Changer.@NotNull ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET || mode == Changer.ChangeMode.DELETE)
             return CollectionUtils.array(Object.class);
         return null;
     }
 
     @Override
-    public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
-        if (mode != Changer.ChangeMode.DELETE && delta == null)
-            return;
+    public void change(@NotNull Event e, Object @NotNull [] delta, Changer.ChangeMode mode) {
 
         switch (mode) {
             case SET: {

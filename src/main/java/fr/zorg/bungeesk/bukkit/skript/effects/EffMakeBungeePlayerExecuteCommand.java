@@ -13,8 +13,9 @@ import fr.zorg.bungeesk.bukkit.packets.PacketClient;
 import fr.zorg.bungeesk.common.entities.BungeePlayer;
 import fr.zorg.bungeesk.common.packets.MakeBungeePlayerCommandPacket;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.NotNull;
 
-@Name("Make bungee player execute command")
+@Name("Make Bungee Player Execute Command")
 @Description("Make a player on the bungeecord execute a specific command")
 @Examples("make bungee player named \"Notch\" execute command \"say What's up people !\"")
 @Since("1.1.0")
@@ -29,14 +30,14 @@ public class EffMakeBungeePlayerExecuteCommand extends Effect {
     private Expression<String> command;
 
     @Override
-    public boolean init(Expression<?>[] exprs, int pattern, Kleenean kleenean, SkriptParser.ParseResult parseResult) {
+    public boolean init(Expression<?>[] exprs, int pattern, @NotNull Kleenean kleenean, SkriptParser.ParseResult parseResult) {
         this.player = (Expression<BungeePlayer>) exprs[0];
         this.command = (Expression<String>) exprs[1];
         return true;
     }
 
     @Override
-    protected void execute(Event e) {
+    protected void execute(@NotNull Event e) {
         if (this.player.getSingle(e) == null)
             return;
 
@@ -45,7 +46,7 @@ public class EffMakeBungeePlayerExecuteCommand extends Effect {
     }
 
     @Override
-    public String toString(Event e, boolean debug) {
+    public @NotNull String toString(Event e, boolean debug) {
         return "make bungee player " + this.player.toString(e, debug) + " execute command " + this.command.toString(e, debug);
     }
 

@@ -41,7 +41,7 @@ public class BungeeSKCommand implements SimpleCommand {
                 return;
             }
 
-            if (PacketServer.getClientSockets().size() == 0) {
+            if (PacketServer.getClientSockets().isEmpty()) {
                 sender.sendMessage(VelocityUtils.getTextComponent(PREFIX + "§fNo servers are connected to BungeeSK"));
                 return;
             }

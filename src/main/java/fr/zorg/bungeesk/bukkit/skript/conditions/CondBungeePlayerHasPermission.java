@@ -14,7 +14,7 @@ import fr.zorg.bungeesk.common.entities.BungeePlayer;
 import fr.zorg.bungeesk.common.packets.BungeePlayerPermissionPacket;
 import org.bukkit.event.Event;
 
-@Name("Does bungee player have / doesn't have permission")
+@Name("BungeePlayer Has Permission")
 @Description("Check if a bungee player has a specific permission on the bungeecord")
 @Examples("broadcast \"Notch has the BungeeSK permission ! :o\" if bungee player named \"Notch\" has permission \"bungeesk.perm\"")
 @Since("1.1.1")

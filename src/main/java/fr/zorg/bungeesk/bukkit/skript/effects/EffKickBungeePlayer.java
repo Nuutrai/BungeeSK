@@ -13,8 +13,9 @@ import fr.zorg.bungeesk.bukkit.packets.PacketClient;
 import fr.zorg.bungeesk.common.entities.BungeePlayer;
 import fr.zorg.bungeesk.common.packets.KickBungeePlayerPacket;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.NotNull;
 
-@Name("Kick bungee player")
+@Name("Kick Bungee Player")
 @Description("Kicks a player on the network from the network")
 @Examples("kick bungee player named \"Notch\" from bungeecord due to \"&cYou're the fake Notch !\"")
 @Since("1.1.0")
@@ -29,7 +30,7 @@ public class EffKickBungeePlayer extends Effect {
     private Expression<String> reason;
 
     @Override
-    public boolean init(Expression<?>[] exprs, int pattern, Kleenean kleenean, SkriptParser.ParseResult parseResult) {
+    public boolean init(Expression<?>[] exprs, int pattern, @NotNull Kleenean kleenean, SkriptParser.@NotNull ParseResult parseResult) {
         this.player = (Expression<BungeePlayer>) exprs[0];
         this.reason = (Expression<String>) exprs[1];
         return true;
@@ -45,7 +46,7 @@ public class EffKickBungeePlayer extends Effect {
     }
 
     @Override
-    public String toString(Event event, boolean b) {
+    public @NotNull String toString(Event event, boolean b) {
         return "kicks bungee player with uuid " + this.player.toString(event, b);
     }
 

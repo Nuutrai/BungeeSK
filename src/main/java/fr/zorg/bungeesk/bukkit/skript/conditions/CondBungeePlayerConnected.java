@@ -15,7 +15,7 @@ import fr.zorg.bungeesk.common.packets.GetBungeePlayerConnectionPacket;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.Nullable;
 
-@Name("Is bungee player connected")
+@Name("BungeePlayer Connected")
 @Description("Checks if a bungee player is connected")
 @Since("1.0.0")
 @Examples("broadcast \"Notch is connected ! :o\" if bungee player named \"Notch\" is connected")

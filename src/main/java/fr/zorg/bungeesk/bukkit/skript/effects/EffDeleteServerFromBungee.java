@@ -12,8 +12,9 @@ import ch.njol.util.Kleenean;
 import fr.zorg.bungeesk.bukkit.packets.PacketClient;
 import fr.zorg.bungeesk.common.packets.DeleteServerFromBungeePacket;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.NotNull;
 
-@Name("Delete dynamic server from Bungeecord")
+@Name("Delete Server from Proxy")
 @Description("Delete a dynamic server from Bungeecord.")
 @Examples("delete server named \"lobby2\" from bungeecord")
 @Since("1.1.1")
@@ -27,18 +28,18 @@ public class EffDeleteServerFromBungee extends Effect {
     private Expression<String> name;
 
     @Override
-    public boolean init(Expression<?>[] exprs, int pattern, Kleenean kleenean, SkriptParser.ParseResult parseResult) {
+    public boolean init(Expression<?>[] exprs, int pattern, @NotNull Kleenean kleenean, SkriptParser.@NotNull ParseResult parseResult) {
         this.name = (Expression<String>) exprs[0];
         return true;
     }
 
     @Override
-    protected void execute(Event e) {
+    protected void execute(@NotNull Event e) {
         PacketClient.sendPacket(new DeleteServerFromBungeePacket(this.name.getSingle(e)));
     }
 
     @Override
-    public String toString(Event e, boolean debug) {
+    public @NotNull String toString(Event e, boolean debug) {
         return "delete server named " + this.name.getSingle(e) + " from bungeecord";
     }
 

@@ -14,8 +14,9 @@ import fr.zorg.bungeesk.bukkit.packets.PacketClient;
 import fr.zorg.bungeesk.common.entities.BungeePlayer;
 import fr.zorg.bungeesk.common.packets.SendTitlePacket;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.NotNull;
 
-@Name("Send Bungeecord title to bungee player")
+@Name("Send Bungeecord Title to BungeePlayer")
 @Description("Send a Bungeecord title to a player on the network")
 @Examples("send bungeecord title \"&cHey you !\" with subtitle \"&6How are you ? :)\" for 3 seconds to bungee player named \"Notch\" with fade-in 10 ticks and fade-out 2 seconds")
 @Since("1.1.0")
@@ -34,7 +35,7 @@ public class EffSendTitle extends Effect {
     private Expression<Timespan> fadeOut;
 
     @Override
-    public boolean init(Expression<?>[] exprs, int pattern, Kleenean kleenean, SkriptParser.ParseResult parseResult) {
+    public boolean init(Expression<?>[] exprs, int pattern, @NotNull Kleenean kleenean, SkriptParser.@NotNull ParseResult parseResult) {
         this.title = (Expression<String>) exprs[0];
         this.subTitle = (Expression<String>) exprs[1];
         this.time = (Expression<Timespan>) exprs[2];
@@ -45,22 +46,22 @@ public class EffSendTitle extends Effect {
     }
 
     @Override
-    protected void execute(Event e) {
+    protected void execute(@NotNull Event e) {
         if (this.player.getSingle(e) == null)
             return;
 
         final String title = this.title == null ? "NONE" : this.title.getSingle(e);
         final String subTitle = this.subTitle == null ? null : this.subTitle.getSingle(e);
-        final Long time = this.time == null ? null : this.time.getSingle(e).getTicks_i();
-        final Long fadeIn = this.fadeIn == null ? null : this.fadeIn.getSingle(e).getTicks_i();
-        final Long fadeOut = this.fadeOut == null ? null : this.fadeOut.getSingle(e).getTicks_i();
+        final Long time = this.time == null ? null : this.time.getSingle(e).getAs(Timespan.TimePeriod.TICK);
+        final Long fadeIn = this.fadeIn == null ? null : this.fadeIn.getSingle(e).getAs(Timespan.TimePeriod.TICK);
+        final Long fadeOut = this.fadeOut == null ? null : this.fadeOut.getSingle(e).getAs(Timespan.TimePeriod.TICK);
 
         final SendTitlePacket packet = new SendTitlePacket(this.player.getSingle(e), title, subTitle, time, fadeIn, fadeOut);
         PacketClient.sendPacket(packet);
     }
 
     @Override
-    public String toString(Event e, boolean debug) {
+    public @NotNull String toString(Event e, boolean debug) {
         return "send title " + this.title.toString(e, debug) + " with subtitle " + this.subTitle.toString(e, debug) + " for " + this.time.toString(e, debug) + " to " + this.player.toString(e, debug);
     }
 

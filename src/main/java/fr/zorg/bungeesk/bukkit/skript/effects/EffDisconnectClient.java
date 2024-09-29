@@ -11,8 +11,9 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import fr.zorg.bungeesk.bukkit.packets.PacketClient;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.NotNull;
 
-@Name("Disconnect client from Bungeecord")
+@Name("Disconnect Client from Bungeecord")
 @Description("Disconnect client from the Bungeecord server")
 @Examples("disconnect this client")
 @Since("1.1.1")
@@ -24,18 +25,18 @@ public class EffDisconnectClient extends Effect {
     }
 
     @Override
-    public boolean init(Expression<?>[] exprs, int pattern, Kleenean kleenean, SkriptParser.ParseResult parseResult) {
+    public boolean init(Expression<?> @NotNull [] exprs, int pattern, @NotNull Kleenean kleenean, SkriptParser.@NotNull ParseResult parseResult) {
         return true;
     }
 
     @Override
-    protected void execute(Event e) {
+    protected void execute(@NotNull Event e) {
         if (PacketClient.isConnected())
             PacketClient.getClient().disconnect();
     }
 
     @Override
-    public String toString(Event e, boolean debug) {
+    public @NotNull String toString(Event e, boolean debug) {
         return "disconnect the actual client from the Bungeecord";
     }
 }

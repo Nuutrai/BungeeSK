@@ -14,7 +14,7 @@ import fr.zorg.bungeesk.common.entities.BungeeServer;
 import fr.zorg.bungeesk.common.packets.GetBungeeServerOnlineStatusPacket;
 import org.bukkit.event.Event;
 
-@Name("Is bungee server started")
+@Name("Bungee Server Started")
 @Description("Checks if a bungee server is started")
 @Examples("broadcast \"Lobby 2 is started\" if bungee server named \"lobby2\" is started")
 @Since("2.0.0")

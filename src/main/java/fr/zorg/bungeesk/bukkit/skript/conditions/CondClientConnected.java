@@ -13,7 +13,7 @@ import fr.zorg.bungeesk.bukkit.packets.PacketClient;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.Nullable;
 
-@Name("Is bungeecord connected")
+@Name("BungeeCord Connected")
 @Description("Checks if the server and the bungeecord are linked")
 @Since("1.0.0")
 @Examples("command /isconnected:\n" +
