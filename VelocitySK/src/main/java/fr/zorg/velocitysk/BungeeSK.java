@@ -21,8 +21,15 @@ import org.slf4j.Logger;
 import java.nio.file.Path;
 import java.time.Duration;
 
-public class BungeeSK {
+@Plugin(
+        id = "bungeesk",
+        name = "BungeeSK",
+        version = "2.1.0",
+        url = "https://github.com/Nuutrai/BungeeSK",
+        authors = {"Zorg, Nuutrai, aabss"}
+)
 
+public class BungeeSK {
     private static ProxyServer server;
     private static Logger logger;
     private static Path dataDirectory;

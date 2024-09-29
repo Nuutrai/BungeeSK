@@ -20,6 +20,8 @@ public class BungeeSKCommand implements SimpleCommand {
     @Override
     public void execute(Invocation invocation) {
 
+
+
         final CommandSource sender = invocation.source();
         final String[] args = invocation.arguments();
 

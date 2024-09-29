@@ -3,19 +3,18 @@ plugins {
 }
 
 dependencies {
-    compileOnly group: "io.papermc.paper", name: "paper-api", version: "1.21-R0.1-SNAPSHOT"
-    compileOnly group: "net.md-5", name: "bungeecord-api", version: "1.20-R0.1-SNAPSHOT"
-    compileOnly group: "org.jetbrains", name: "annotations", version: "22.0.0"
-    compileOnly(group: "com.github.SkriptLang", name: "Skript", version: "2.9.2") {
+    compileOnly("io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT")
+    compileOnly("net.md-5:bungeecord-api:1.20-R0.1-SNAPSHOT")
+    compileOnly("org.jetbrains:annotations:22.0.0")
+    compileOnly("com.github.SkriptLang:Skript:2.9.2") {
         exclude group: "com.sk89q.worldguard", module: "worldguard-legacy"
         exclude group: "net.milkbowl.vault", module: "Vault"
     }
-    implementation group: "commons-io", name: "commons-io", version: "2.11.0"
-
-    implementation group: "com.github.rockaport", name: "alice", version: "0.9.0"
-    implementation group: "com.github.Carleslc.Simple-YAML", name: "Simple-Yaml", version: "1.8.4"
-    implementation group: "io.methvin", name: "directory-watcher", version: "0.15.1"
-    implementation group: "org.xerial", name: "sqlite-jdbc", version: "3.42.0.0"
+    implementation("commons-io:commons-io:2.11.0")
+    implementation("com.github.rockaport:alice:0.9.0")
+    implementation("com.github.Carleslc.Simple-YAML:Simple-Yaml:1.8.4")
+    implementation("io.methvin:directory-watcher:0.15.1")
+    implementation("org.xerial:sqlite-jdbc:3.46.1.3")
 }
 
 java {

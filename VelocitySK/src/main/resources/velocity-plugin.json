@@ -1,9 +1,0 @@
-{
-  "id": "bungeesk",
-  "name": "BungeeSK",
-  "version": "2.1.0",
-  "url": "https://github.com/Nuutrai/BungeeSK",
-  "authors": ["Zorg, Nuutrai"],
-  "dependencies": [],
-  "main": "fr.zorg.velocitysk.BungeeSK"
-}
