@@ -1,21 +1,5 @@
 plugins {
     id "java"
-    id "com.github.johnrengelman.shadow" version "7.1.2"
-}
-
-group = "fr.zorg"
-version = parent.version
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
-    }
-}
-
-repositories {
-    mavenCentral()
-    maven { url = "https://jitpack.io" }
-    maven { url = "https://repo.papermc.io/repository/maven-public/" }
 }
 
 dependencies {
@@ -29,14 +13,27 @@ dependencies {
     annotationProcessor group: "com.velocitypowered", name: "velocity-api", version: "3.2.0-SNAPSHOT"
 }
 
-[compileJava, compileTestJava]*.options*.encoding = "UTF-8"
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+}
 
-shadowJar {
-    archiveFileName = "BungeeSK_Velocity.jar"
+def oldestJava = 17
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ["-source", "" + oldestJava, "-target", "" + oldestJava]
+}
 
-    relocate "org.bstats", "fr.zorg"
-
-    minimize {
-        exclude dependency("org.xerial:sqlite-jdbc:.*")
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset "UTF-8"
+    filesMatching("plugin.yml") {
+        expand props
     }
+}
+
+jar {
+    archiveBaseName.set("${rootProject.name}")
+    archiveVersion.set(version.toString())
+    archiveClassifier.set("")
+    destinationDirectory.set(file("${rootProject.buildDir}/libs"))
 }

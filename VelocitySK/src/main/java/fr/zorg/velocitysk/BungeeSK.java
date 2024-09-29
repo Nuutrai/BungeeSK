@@ -15,7 +15,7 @@ import fr.zorg.velocitysk.storage.GlobalScripts;
 import fr.zorg.velocitysk.storage.GlobalVariables;
 import fr.zorg.velocitysk.utils.BungeeConfig;
 import fr.zorg.velocitysk.utils.BungeeEventsListener;
-import org.bstats.velocity.Metrics;
+import fr.zorg.velocitysk.utils.Metrics;
 import org.slf4j.Logger;
 
 import java.nio.file.Path;
