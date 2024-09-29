@@ -72,5 +72,6 @@ shadowJar {
         include(dependency("com.github.Carleslc.Simple-YAML:Simple-Yaml:1.8.4"))
         include(dependency("com.github.rockaport:alice:0.9.0"))
         include(dependency("org.xerial:sqlite-jdbc:3.46.1.3"))
+        include(dependency("io.methvin:directory-watcher:0.15.1"))
     }
 }
