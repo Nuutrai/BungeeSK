@@ -1,3 +1,2 @@
-include 'BungeeSK-Universal'
-include 'BungeeSK'
-include 'VelocitySK'
+rootProject.name = 'BungeeSK'
+include ":BungeeSK", ":VelocitySK"

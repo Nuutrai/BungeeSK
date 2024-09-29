@@ -21,13 +21,6 @@ import org.slf4j.Logger;
 import java.nio.file.Path;
 import java.time.Duration;
 
-@Plugin(
-        id = "bungeesk",
-        name = "BungeeSK",
-        version = "2.0.0",
-        authors = {"Zorg"},
-        url = "https://github.com/ZorgBtw/BungeeSK"
-)
 public class BungeeSK {
 
     private static ProxyServer server;

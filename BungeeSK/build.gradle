@@ -40,5 +40,5 @@ jar {
     archiveBaseName.set("${rootProject.name}")
     archiveVersion.set(version.toString())
     archiveClassifier.set("")
-    destinationDirectory.set(file("${rootProject.buildDir}/libs"))
+    destinationDirectory.set(file("${rootProject.buildDir}/libs/Bung"))
 }
