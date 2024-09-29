@@ -26,7 +26,7 @@ public class BukkitAPI {
         return this;
     }
 
-    public BukkitAPI registerListeners(String packageName, JavaPlugin plugin) {
+    public void registerListeners(String packageName, JavaPlugin plugin) {
 
         try {
             final Method method = plugin.getClass().getSuperclass().getDeclaredMethod("getFile");
@@ -44,7 +44,6 @@ public class BukkitAPI {
         } catch (IOException | NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
             ex.printStackTrace();
         }
-        return this;
     }
 
     public BukkitAPI sendPacket(BungeeSKPacket packet) {

@@ -83,16 +83,4 @@ public class BungeeEventsListener {
         e.setPing(response);
     }
 
-    @Subscribe
-    public void onCommandCompletion(PlayerAvailableCommandsEvent e) {
-        if (!(e.getPlayer().hasPermission("bungeesk.command")
-                && e.getRootNode().getChildren().stream().map(CommandNode::getName).toList().contains("bungeesk"))) {
-            e.getRootNode().getChildren().forEach(commandNode -> {
-                if (commandNode.getName().equals("bungeesk")) {
-                    e.getRootNode().getChildren().remove(commandNode);
-                }
-            });
-        }
-    }
-
 }
