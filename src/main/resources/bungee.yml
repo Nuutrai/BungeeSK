@@ -1,0 +1,4 @@
+name: BungeeSK
+author: Zorg, Nuutrai, aabss
+main: fr.zorg.bungeesk.bungee.BungeeSK
+version: ${version}

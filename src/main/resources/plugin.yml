@@ -1,0 +1,7 @@
+name: BungeeSK
+author: Zorg, Nuutrai, aabss
+main: fr.zorg.bungeesk.bukkit.BungeeSK
+website: https://github.com/Nuutrai/BungeeSK
+version: ${version}
+api-version: 1.21
+softdepend: [ Skript ]

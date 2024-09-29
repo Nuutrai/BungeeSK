@@ -1,0 +1,8 @@
+{
+  "id": "bungeesk",
+  "name": "BungeeSK",
+  "version": "${version}",
+  "authors": ["Zorg, Nuutrai, aabss"],
+  "main": "fr.zorg.bungeesk.velocity.BungeeSK",
+  "url": "https://github.com/Nuutrai/BungeeSK"
+}
